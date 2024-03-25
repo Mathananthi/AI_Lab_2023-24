@@ -1,6 +1,6 @@
 # Ex.No: 10  Logic Programming –  Simple queries from facts and rules
-### DATE:                                                                            
-### REGISTER NUMBER : 
+### DATE: 9/3/2024                                                                           
+### REGISTER NUMBER : 212221040102
 ### AIM: 
 To write a prolog program to find the answer of query. 
 ###  Algorithm:
@@ -13,39 +13,79 @@ To write a prolog program to find the answer of query.
  Step 8:  Stop the program.
 ### Program:
 ### Task 1:
+
 Construct the FOL representation for the following sentences <br> 
 1.	John likes all kinds of food.  <br> 
 2.	Apples are food.  <br> 
 3.	Chicken is a food.  <br> 
 4.	Sue eats everything Bill eats. <br> 
 5.	 Bill eats peanuts  <br> 
-   Convert into clause form and Prove that John like Apple by using Prolog. <br> 
+   Convert into clause form and Prove that John like Apple by using Prolog. <br>
+
 ### Program:
-
-
+```
+likes(john,X):-food(X).
+food(apple).
+food(vegetable).
+eats(bill,peanuts).
+eats(sue,X):-eats(bill,X).
+alive(bill).
+```
 ### Output:
+![Screenshot 2024-03-09 160642](https://github.com/Madhan213/AI_Lab_2023-24/assets/130206230/dc3f489a-5f00-450d-ae0a-d3788de0e067)
+
 
 ### Task 2:
+
 Consider the following facts and represent them in predicate form: <br>              
 1.	Steve likes easy courses. <br> 
 2.	Science courses are hard. <br> 
 3. All the courses in Have fun department are easy <br> 
 4. BK301 is Have fun department course.<br> 
-Convert the facts in predicate form to clauses and then prove by resolution: “Steve likes BK301 course”<br> 
+Convert the facts in predicate form to clauses and then prove by resolution: “Steve likes BK301 course”<br>
+
 
 ### Program:
-
+```
+likes(steve,X):-
+     easycourse(X).
+hard(sciencecourse).
+easycourse(X):-
+    course(X,dept(havefun)).
+course(bk301,dept(havefun)).
+```
 
 ### Output:
+![Screenshot 2024-03-09 160747](https://github.com/Madhan213/AI_Lab_2023-24/assets/130206230/e964c221-7f47-461d-9a48-bd1f075383fe)
 
 ### Task 3:
+
 Consider the statement <br> 
 “This is a crime for an American to sell weapons to hostile nations. The Nano , enemy of America has some missiles and its missiles were sold it by Colonal West who is an American” <br> 
-Convert to Clause form and prove west is criminal by using Prolog.<br> 
-### Program:
+Convert to Clause form and prove west is criminal by using Prolog.<br>
 
+### Program:
+```
+criminal(X):-
+	american(X),
+	weapon(Y),
+	hostile(Z),
+	sells(X,Y,Z).
+weapon(Y):-
+	missile(Y).
+hostile(Z):-
+	enemy(Z,X).
+sells(west,Y,nano):-
+    missile(Y),
+	owns(nano,Y).
+missile(m).
+owns(nano,m).
+enemy(nano,america).
+american(west).
+```
 
 ### Output:
+![Screenshot 2024-03-09 161534](https://github.com/Madhan213/AI_Lab_2023-24/assets/130206230/73c79e0f-5ada-4d4a-890e-7a0a90c53b5d)
 
 ### Result:
 Thus the prolog programs were executed successfully and the answer of query was found.
